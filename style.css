@@ -1,0 +1,461 @@
+@charset "UTF-8";
+/*
+Theme Name: Alied
+Author: Uice Lu
+Author URI: https://cecilia.uice.lu/
+Template: storefront
+Description: Theme for Alied Australia website.
+Text Domain: alied
+
+*/
+
+/* Common style */
+body {
+    margin: 0;
+    font-size: 16px;
+    color: #58595b;
+}
+
+img {
+    max-width: 100%;
+}
+
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+ol li {
+    list-style-position: inside;
+}
+
+hr {
+    border: none;
+    border-bottom: #e0e0e0 solid 3px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    font-size: inherit;
+}
+
+/* Cross-page style */
+header {
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 180px;
+}
+
+.primary-navigation ul {
+    display: flex;
+    height: 100%;
+}
+
+.primary-navigation li {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+ul.menu li a {
+    color: #58595b;
+}
+
+.primary-navigation li a {
+    color: #58595b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    padding: 0 10vw;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 100px;
+    margin-top: 30px;
+}
+
+footer .logo {
+    width: 40%;
+}
+
+footer .contact {
+    width: 40%;
+}
+
+footer .contact p {
+    margin: 5px 0;
+    font-family: serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+footer .qr {
+    height: 120px;
+    background: #a80912;
+    color: #fff;
+    width: 120px;
+}
+
+/* Homepage style */
+section {
+    padding: 0 10vw;
+    margin: auto;
+}
+
+.section-title {
+    color: #8d221f;
+    font-size: 96px;
+    text-align: center;
+    font-family: serif;
+    margin-top: 100px;
+}
+
+.section-title small {
+    display: block;
+    font-size: 24px;
+    font-family: initial;
+    color: #58595b;
+    font-weight: lighter;
+}
+
+#banner {
+    padding: 0;
+}
+
+#banner img {
+    width: 100%;
+}
+
+#about {
+    text-align: center;
+}
+
+#about h3 {
+    color: #8d221f;
+    margin-top: 40px;
+}
+
+#about strong {
+    color: #8d221f;
+    font-size: 120%;
+}
+
+#estates dl {
+    display: flex;
+    margin: 0;
+    position: relative;
+}
+
+#estates dl:after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 15px;
+    background: white;
+    left: 50%;
+    margin-left: -15px;
+    top: 50%;
+    margin-top: -15px;
+}
+
+#estates dl dt {
+    width: 50%;
+    line-height: 0;
+}
+
+#estates dl dt img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#estates dl dd {
+    width: 50%;
+    margin: 0;
+    background: #8d221f;
+    color: #fff;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#estates dl dd h2 {
+    font-size: 40px;
+    font-weight: lighter;
+    margin: 0;
+    margin-right: 20px;
+}
+
+#estates dl dd * {
+    color: #fff;
+}
+
+#estates dl:nth-child(2n) dt {
+    order: 2;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0,0,0,0.8);
+    overflow-y: auto;
+}
+
+#estates .modal .estate-detail {
+    width: 60%;
+    margin: 10vh auto;
+    background: #fff;
+    position: relative;
+}
+
+#estates .modal .estate-detail .banner {
+    display: flex;
+    height: 28vw;
+    background-size: cover;
+    background-position: center;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#estates .modal .estate-detail .banner .title {
+    margin: 0;
+    color: #fff;
+    font-size: 120px;
+    line-height: 0.7;
+}
+
+#estates .modal .estate-detail .content {
+    padding: 10px 60px 40px;
+}
+
+#estates .modal .estate-detail .content h4 {
+    text-align: center;
+    color: #9a1117;
+    border-bottom: 3px solid;
+    font-size: 28px;
+}
+
+#estates .modal .estate-detail .content hr {
+    margin: 15px 0;
+    border: none;
+    border-bottom: 2px black solid;
+    background: none;
+}
+
+#estates .modal .close {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 0;
+    width: 0;
+    border: none;
+    border-bottom: 75px solid #9a1117;
+    border-left: 75px solid transparent;
+    color: #fff;
+    font-size: 80px;
+    padding: 0;
+    background: none;
+    outline: none;
+}
+
+#estates .modal .close::after {
+    content: 'x';
+}
+
+#shop ul {
+    display: flex;
+}
+
+#shop ul li {
+    width: 20%;
+}
+
+#shop ul li img {
+    height: auto;
+}
+
+#shop ul li .product-name h2 {
+    font-size: 18px;
+    text-align: center;
+    padding: 0 15px;
+}
+
+#shop .actions {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+#shop .more {
+    display: inline-block;
+    background: #852724;
+    color: #fff;
+    padding: 8px 30px;
+    border-radius: 18px;
+    font-size: 24px;
+}
+
+#news ul {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+}
+
+#news ul li {
+    width: 24%;
+}
+
+#news ul li .news-poster {
+    line-height: 0;
+}
+
+#news ul li .news-poster img {
+    width: 100%;
+    height: 425px;
+    object-fit: cover;
+}
+
+#news ul li .news-caption {
+    background: #fff;
+    padding: 20px;
+}
+
+#news ul li .news-date {
+    color: #911c1e;
+}
+
+#news ul li .news-title {
+    margin: 15px 0;
+    font-size: 20px;
+}
+
+#news ul li .news-excerpt {
+    font-size: 12px;
+}
+
+#news {
+    position: relative;
+    padding-bottom: 100px;
+}
+
+#news:after {
+    content: '';
+    width: 100vw;
+    height: 50%;
+    background: #8d221f;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Store style */
+.woocommerce-products-header {
+    background: #8d221f;
+    /* width: 100%; */
+    padding: 15px 10% !important;
+    margin-bottom: 30px;
+}
+
+.woocommerce-products-header__title {
+    font-weight: normal;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+}
+
+.products {
+    display: flex;
+    width: 80%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.products.columns-3 .product {
+    width: 33%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.products .product .attachment-woocommerce_thumbnail {
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.woocommerce-loop-product__title {
+    margin: 10px 0;
+    padding: 0 40px;
+    min-height: 4em;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.woocommerce-Price-amount {
+    color: #8d221f;
+    font-weight: lighter;
+    font-size: 28px;
+    height: 45px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.add_to_cart_button, .single_add_to_cart_button {
+    /*background: #8d221f;*/
+    /*color: #fff;*/
+    /*padding: 10px 15px;*/
+    /*border-radius: 10px;*/
+    /*box-shadow: 3px 3px 15px #7b6969;*/
+    /*margin-left: 25px;*/
+    /*border: none;*/
+}
+
+.storefront-sorting {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+.woocommerce-ordering {
+    margin-right: 15px;
+}
+
+.woocommerce-ordering select {
+    font-size: 14px;
+}
+
+.woocommerce-result-count {
+    margin: 0;
+}
+
+/* Single product */
+.woocommerce-product-gallery {
+    opacity: 1 !important;
+}
+
+.single-product .product {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    margin-top: 100px;
+}
+
