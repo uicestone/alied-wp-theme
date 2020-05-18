@@ -80,18 +80,42 @@
 		NEWS
 		<small class="section-subtitle">———— 新闻资讯 ————</small>
 	</h1>
-	<ul>
-		<?php foreach (get_posts(['category_name' => 'news', 'limit' => 4]) as $news): ?>
-		<li>
-			<div class="news-poster"><?=get_the_post_thumbnail($news->ID)?></div>
-			<div class="news-caption">
-				<div class="news-date"><?=get_the_date('',$news->ID)?></div>
-				<h2 class="news-title"><?=get_the_title($news->ID)?></h2>
-				<div class="news-excerpt"><?=get_the_excerpt($news->ID)?></div>
+	<?php $news_list = get_posts(['category_name' => 'news', 'limit' => -1]); ?>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<ul class="swiper-slide">
+			<?php foreach ($news_list as $index => $news): ?>
+			<?php if ($index && $index % 4 === 0): ?>
+			</ul>
+			<ul class="swiper-slide">
+			<?php endif; ?>
+			<li class="open-modal" data-id="<?=$news->ID?>">
+				<div class="news-poster"><?=get_the_post_thumbnail($news->ID)?></div>
+				<div class="news-caption">
+					<div class="news-date"><?=get_the_date('',$news->ID)?></div>
+					<h2 class="news-title"><?=get_the_title($news->ID)?></h2>
+					<div class="news-excerpt"><?=get_the_excerpt($news->ID)?></div>
+				</div>
+			</li>
+			<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+	<div class="swiper-button-next"></div>
+	<div class="swiper-button-prev"></div>
+	<?php foreach ($news_list as $news): ?>
+		<div id="modal-<?=$news->ID?>" class="modal">
+			<div class="news-detail">
+				<?=get_the_post_thumbnail($news->ID, 'full')?>
+				<div class="content">
+					<h4 class="date"><?=get_the_date('',$news->ID)?></h4>
+					<h3 class="title"><?=get_the_title($news->ID)?></h3>
+					<?=wpautop(do_shortcode($news->post_content))?>
+				</div>
+				<button class="close"></button>
 			</div>
-		</li>
-		<?php endforeach; ?>
-	</ul>
+		</div>
+	<?php endforeach; ?>
 </section>
 
 <section id="contact">
@@ -103,4 +127,14 @@
 		<img src="<?=get_stylesheet_directory_uri()?>/img/map.png" style="width:100%">
 	</div>
 </section>
+
+<script type="text/javascript">
+    var swiper = new Swiper('.swiper-container', {
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+
 <?php get_footer(); ?>

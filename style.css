@@ -112,7 +112,7 @@ footer .qr {
 }
 
 /* Homepage style */
-section {
+body>section {
     padding: 0 10vw;
     margin: auto;
 }
@@ -214,6 +214,7 @@ section {
 .modal {
     display: none;
     position: fixed;
+    z-index: 15;
     left: 0;
     right: 0;
     bottom: 0;
@@ -283,9 +284,10 @@ section {
     content: '×';
     display: block;
     left: -36px;
-    top: 6px;
+    top: -2px;
     position: relative;
-    font-size: 59px;
+    font-size: 68px;
+    font-weight: 100;
 }
 
 #shop ul {
@@ -347,7 +349,9 @@ section {
 }
 
 #news ul li .news-date {
+    display: inline-block;
     color: #911c1e;
+    border-bottom: solid 3px;
 }
 
 #news ul li .news-title {
@@ -364,6 +368,8 @@ section {
 #news {
     position: relative;
     padding-bottom: 100px;
+    --swiper-navigation-color: #822b25;
+    --swiper-navigation-size: 80px;
 }
 
 #news:after {
@@ -375,6 +381,79 @@ section {
     bottom: 0;
     left: 0;
     z-index: -1;
+}
+
+#news .modal .news-detail {
+    width: 72%;
+    margin: 10vh auto;
+    background: #fff;
+    position: relative;
+    display: flex;
+    max-height: 80vh;
+}
+
+#news .modal .news-detail .wp-post-image {
+    width: 49%;
+    display: block;
+    object-fit: cover;
+}
+
+#news .modal .news-detail .content {
+    padding: 10px 60px 40px;
+    overflow-y: auto;
+    width: 51%;
+}
+
+#news .modal .news-detail .content h4 {
+    color: #9a1117;
+    border-bottom: 3px solid;
+    font-size: 28px;
+    display: inline-block;
+}
+
+#news .modal .news-detail .content hr {
+    margin: 15px 0;
+    border: none;
+    border-bottom: 2px black solid;
+    background: none;
+}
+
+#news .modal .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 0;
+    width: 0;
+    border: none;
+    border-top: 75px solid #9a1117;
+    border-left: 75px solid transparent;
+    color: #fff;
+    font-size: 80px;
+    padding: 0;
+    background: none;
+    outline: none;
+}
+
+#news .modal .close::after {
+    content: '×';
+    display: block;
+    left: -35px;
+    top: -109px;
+    position: relative;
+    font-size: 68px;
+    font-weight: 100;
+}
+
+#news .swiper-button-next, #news .swiper-button-prev {
+    top: 40%;
+}
+
+#news .swiper-button-next {
+    right: 30px;
+}
+
+#news .prev {
+    left: 30px;
 }
 
 /* Store style */
