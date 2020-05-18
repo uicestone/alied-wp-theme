@@ -22,8 +22,9 @@
 		<small class="section-subtitle">———— 精品酒庄 ————</small>
 	</h1>
 	<div>
-	<?php foreach (get_posts(['category_name' => 'estates', 'limit' => -1, 'order' => 'asc']) as $estate): ?>
-		<dl>
+	<?php $estates = get_posts(['category_name' => 'estates', 'limit' => -1, 'order' => 'asc']);?>
+	<?php foreach ($estates as $estate): ?>
+		<dl class="open-modal" data-id="<?=$estate->ID?>">
 			<dt><?=get_the_post_thumbnail($estate->ID)?></dt>
 			<dd>
 				<h2><?=get_the_title($estate->ID)?></h2>
@@ -31,19 +32,20 @@
 			</dd>
 		</dl>
 	<?php endforeach; ?>
-		<div class="modal">
+	<?php foreach ($estates as $estate): ?>
+		<div id="modal-<?=$estate->ID?>" class="modal">
 			<div class="estate-detail">
-				<?php $estate = get_page_by_path('benfu',OBJECT,'post')?>
 				<div class="banner" style="background-image: url('<?=get_the_post_thumbnail_url($estate->ID,'full')?>')">
 					<h3 class="title"><?=get_the_title($estate->ID)?></h3>
 				</div>
 				<div class="content">
 					<h4><?=get_the_subtitle($estate->ID)?></h4>
-					<?=get_the_content(null,false,$estate->ID)?>
+					<?=wpautop($estate->post_content)?>
 				</div>
 				<button class="close"></button>
 			</div>
 		</div>
+	<?php endforeach; ?>
 	</div>
 </section>
 

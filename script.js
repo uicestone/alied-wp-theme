@@ -1,8 +1,11 @@
 jQuery(function($){
-    $('#estates dl').click(function(){
-        $('.modal').fadeIn(500)
+    $('.open-modal').click(function(){
+        var id = $(this).data('id');
+        $('#modal-'+id).fadeIn(500);
+        $('body').addClass('no-scroll');
     });
-    $('#estates .modal .close').click(function(){
-        $(this).parents('.modal').fadeOut(500)
+    $('.modal .close').click(function(){
+        $('.modal').fadeOut(500);
+        $('body').removeClass('no-scroll');
     });
 });

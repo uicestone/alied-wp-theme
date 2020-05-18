@@ -16,6 +16,10 @@ body {
     color: #58595b;
 }
 
+body.no-scroll {
+    overflow-y: hidden;
+}
+
 img {
     max-width: 100%;
 }
@@ -276,7 +280,12 @@ section {
 }
 
 #estates .modal .close::after {
-    content: 'x';
+    content: '×';
+    display: block;
+    left: -36px;
+    top: 6px;
+    position: relative;
+    font-size: 59px;
 }
 
 #shop ul {
@@ -344,10 +353,12 @@ section {
 #news ul li .news-title {
     margin: 15px 0;
     font-size: 20px;
+    min-height: 72px;
 }
 
 #news ul li .news-excerpt {
     font-size: 12px;
+    min-height: 133px;
 }
 
 #news {
