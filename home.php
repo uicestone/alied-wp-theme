@@ -1,7 +1,9 @@
 <?php get_header(); ?>
 
 <section id="banner">
-	<img src="<?=get_stylesheet_directory_uri()?>/img/banner.jpg">
+	<?php $banner_post = get_posts(['tag' => 'home-banner'])[0]; ?>
+	<?php if (!$banner_post): ?>头图缺失<?php endif; ?>
+	<?=get_the_post_thumbnail($banner_post->ID, 'full')?>
 </section>
 
 <section id="about">
@@ -22,7 +24,7 @@
 		<small class="section-subtitle">———— 精品酒庄 ————</small>
 	</h1>
 	<div>
-	<?php $estates = get_posts(['category_name' => 'estates', 'limit' => -1, 'order' => 'asc']);?>
+	<?php $estates = get_posts(['category_name' => 'estates', 'posts_per_page' => -1, 'order' => 'asc']);?>
 	<?php foreach ($estates as $estate): ?>
 		<dl class="open-modal" data-id="<?=$estate->ID?>">
 			<dt><?=get_the_post_thumbnail($estate->ID)?></dt>
@@ -57,12 +59,13 @@
 		<small class="section-subtitle">———— 美酒商城 ————</small>
 	</h1>
 	<ul>
-		<?php foreach (get_posts(['post_type' => 'product', 'limit' => -1]) as $product): ?>
+		<?php foreach (get_posts(['post_type' => 'product', 'posts_per_page' => 5]) as $product): ?>
 		<li>
 			<a href="<?=get_the_permalink($product->ID)?>">
 				<div class="product-image"><?=get_the_post_thumbnail($product->ID)?></div>
 				<div class="product-name">
 					<h2><?=get_the_title($product->ID)?></h2>
+					<h2><?=get_the_subtitle($product->ID)?></h2>
 				</div>
 			</a>
 		</li>
@@ -80,7 +83,7 @@
 		NEWS
 		<small class="section-subtitle">———— 新闻资讯 ————</small>
 	</h1>
-	<?php $news_list = get_posts(['category_name' => 'news', 'limit' => -1]); ?>
+	<?php $news_list = get_posts(['category_name' => 'news', 'posts_per_page' => -1]); ?>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 			<ul class="swiper-slide">
