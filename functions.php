@@ -25,6 +25,8 @@ function sf_child_theme_dequeue_style() {
 
 show_admin_bar(false);
 
+add_post_type_support('product', 'wps_subtitle');
+
 add_action('wp', function() {
 	wp_register_style('style', get_stylesheet_directory_uri() . '/style.css', array(), time());
 	wp_register_style('swiper', get_stylesheet_directory_uri() . '/lib/swiper.min.css', array(), '5.4.0');
