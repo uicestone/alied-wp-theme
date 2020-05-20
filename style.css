@@ -81,7 +81,7 @@ ul.menu li a {
 }
 
 footer {
-    padding: 0 10vw;
+    padding: 0 20vw;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -113,7 +113,8 @@ footer .qr {
 
 /* Homepage style */
 body>section {
-    padding: 0 10vw;
+    padding: 0 20vw;
+    min-width: 1024px;
     margin: auto;
 }
 
@@ -324,13 +325,22 @@ body>section {
 
 #news ul {
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     width: 90%;
     margin: auto;
 }
 
 #news ul li {
     width: 24%;
+    padding: 0 0.5%;
+}
+
+#news ul li:first-child {
+    padding-left: 0;
+}
+
+#news ul li:last-child {
+    padding-right: 0;
 }
 
 #news ul li .news-poster {
@@ -366,6 +376,7 @@ body>section {
 }
 
 #news {
+    padding: 0 15vw;
     position: relative;
     padding-bottom: 100px;
     --swiper-navigation-color: #822b25;
