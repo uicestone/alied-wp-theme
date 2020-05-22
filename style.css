@@ -57,7 +57,7 @@ a {
 }
 
 /* Cross-page style */
-header {
+body>header {
     padding: 10px 40px;
     display: flex;
     justify-content: space-between;
@@ -66,9 +66,9 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 2;
+    z-index: 15;
     background: white;
-    box-shadow: 2px 3px 20px #333;
+    box-shadow: 2px 3px 15px #7b7b7b;
 }
 
 .logo {
@@ -144,6 +144,10 @@ footer .qr {
     text-align: center;
     width: 100%;
     color: #fff;
+}
+
+.edit-link {
+    display: none;
 }
 
 /* Homepage style */
@@ -722,6 +726,32 @@ body>section {
     }
     footer .contact {
         text-align: center;
+    }
+}
+
+/* iPad style */
+@media screen and (max-width: 1024px) and  (min-width: 768px) {
+    .primary-navigation {
+        width: 70%;
+    }
+    .primary-navigation li {
+        padding: 0 8px;
+        font-size: 14px;
+    }
+    .primary-navigation li a {
+        font-weight: normal;
+    }
+    body>section, #news, footer {
+        padding: 0 10vw;
+    }
+    .storefront-sorting {
+        flex-wrap: wrap;
+    }
+    .woocommerce-notices-wrapper {
+        width: 100%;
+    }
+    .entry-content {
+        padding: 5vh 5vw 0;
     }
 }
 
