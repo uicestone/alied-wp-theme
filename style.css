@@ -17,6 +17,7 @@ body {
     --swiper-theme-color: #822b25;
     --swiper-navigation-color: #822b25;
     --swiper-navigation-size: 80px;
+    padding-top: 74px;
 }
 
 body.no-scroll {
@@ -56,6 +57,14 @@ header {
     padding: 10px 40px;
     display: flex;
     justify-content: space-between;
+    height: 74px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: white;
+    box-shadow: 2px 3px 20px #333;
 }
 
 .logo {
