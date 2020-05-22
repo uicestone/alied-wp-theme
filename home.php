@@ -148,8 +148,8 @@
 <script type="text/javascript">
     var swiper = new Swiper('#news-swiper', {
         navigation: {
-            nextEl: '#news-swiper .swiper-button-next',
-            prevEl: '#news-swiper .swiper-button-prev'
+            nextEl: '#news-swiper ~ .swiper-button-next',
+            prevEl: '#news-swiper ~ .swiper-button-prev'
         }
     });
     var bannerSwiper = new Swiper('#banner-swiper', {
