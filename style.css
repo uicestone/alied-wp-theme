@@ -13,6 +13,10 @@ Text Domain: alied
 body {
     margin: 0;
     font-size: 16px;
+    font-family:
+            "PingFang SC",
+            "Microsoft YaHei UI", "Microsoft YaHei",
+            serif;
     color: #58595b;
     --swiper-theme-color: #822b25;
     --swiper-navigation-color: #822b25;
@@ -77,7 +81,7 @@ header {
 }
 
 .primary-navigation li {
-    padding: 0 20px;
+    padding: 0 16px;
     display: flex;
     align-items: center;
 }
@@ -145,7 +149,7 @@ footer .qr {
 /* Homepage style */
 body>section {
     padding: 0 20vw;
-    min-width: 1024px;
+    /*min-width: 1024px;*/
     margin: auto;
 }
 
@@ -153,7 +157,7 @@ body>section {
     color: #8d221f;
     font-size: 96px;
     text-align: center;
-    font-family: serif;
+    font-family: "Songti SC", "STSong", serif;
     margin-top: 100px;
 }
 
@@ -171,6 +175,8 @@ body>section {
 
 #banner img {
     width: 100%;
+    min-height: 40vh;
+    object-fit: cover;
 }
 
 #about {
@@ -284,7 +290,9 @@ body>section {
     margin: 0;
     color: #fff;
     font-size: 120px;
-    line-height: 0.7;
+    line-height: 0.8;
+    text-shadow: 0 -5px 5px #444;
+    font-family: "Microsoft YaHei", sans-serif;
 }
 
 #estates .modal .estate-detail .content {
@@ -622,5 +630,98 @@ body>section {
     width: 80%;
     margin: auto;
     margin-top: 100px;
+}
+
+/* Mobile style */
+@media screen and (max-width: 400px) {
+    .swiper-button-next, .swiper-button-prev {
+        display: none;
+    }
+    .section-title {
+        font-size: 48px;
+        margin-top: 50px;
+    }
+    .section-title small {
+        font-size: 18px;
+    }
+    body>section {
+        padding: 0 10vw;
+    }
+    #estates dl dt img {
+        min-height: 90px;
+    }
+    #estates dl dd {
+        flex-wrap: wrap;
+    }
+    #estates dl dd h2 {
+        font-size: 23px;
+        margin-right: 0;
+        text-align: center;
+    }
+    #estates dl dd h3 {
+        font-size: 20px;
+        padding-top: 0;
+        margin: 0;
+        border-top: 0;
+    }
+    #estates dl:after {
+        width: 16px;
+        height: 16px;
+        border-radius: 8px;
+        margin-left: -8px;
+        margin-top: -8px;
+    }
+    #shop ul {
+        flex-wrap: wrap;
+    }
+    #shop ul li {
+        width: 50%;
+    }
+    #news {
+        padding: 0 10vw;
+    }
+    #news .swiper-wrapper {
+        flex-wrap: wrap;
+    }
+    #news ul {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    #news ul li {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+    #news .modal .news-detail {
+        width: 100%;
+        margin: 0 auto;
+        max-height: 100vh;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    #news .modal .news-detail .wp-post-image {
+        width: 100%;
+    }
+    #news .modal .news-detail .content {
+        width: 100%;
+        overflow-y: initial;
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+    #news .modal .close {
+        position: fixed;
+    }
+    footer {
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    footer > .logo, footer > .contact {
+        width: 100% !important;
+        margin-bottom: 10%;
+    }
+    footer .contact {
+        text-align: center;
+    }
 }
 
