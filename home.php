@@ -127,7 +127,7 @@
 		<small class="section-subtitle">———— 联系我们 ————</small>
 	</h1>
 	<div>
-		<img src="<?=get_stylesheet_directory_uri()?>/img/map.png" style="width:100%">
+		<img src="<?=get_stylesheet_directory_uri()?>/img/25-cook-rd.png" style="width:100%">
 	</div>
 </section>
 
