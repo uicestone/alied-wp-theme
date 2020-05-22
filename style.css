@@ -14,6 +14,9 @@ body {
     margin: 0;
     font-size: 16px;
     color: #58595b;
+    --swiper-theme-color: #822b25;
+    --swiper-navigation-color: #822b25;
+    --swiper-navigation-size: 80px;
 }
 
 body.no-scroll {
@@ -98,17 +101,36 @@ footer .contact {
 }
 
 footer .contact p {
-    margin: 5px 0;
-    font-family: serif;
-    font-size: 22px;
-    font-weight: bold;
+    margin: 0 0;
+    font-family: "Times New Roman", serif;
+    font-size: 14px;
+    /*font-weight: bold;*/
+    line-height: 1.9;
 }
 
 footer .qr {
-    height: 120px;
+    height: 105px;
     background: #a80912;
     color: #fff;
-    width: 120px;
+    width: 105px;
+}
+
+.entry-content {
+    padding: 5vw 20vw 0;
+}
+
+.entry-header {
+    background: #8d221f;
+    /* width: 100%; */
+    padding: 15px 10% !important;
+    margin-bottom: 30px;
+}
+
+.entry-header .entry-title {
+    font-weight: normal;
+    text-align: center;
+    width: 100%;
+    color: #fff;
 }
 
 /* Homepage style */
@@ -379,8 +401,6 @@ body>section {
     padding: 0 15vw;
     position: relative;
     padding-bottom: 100px;
-    --swiper-navigation-color: #822b25;
-    --swiper-navigation-size: 80px;
 }
 
 #news:after {

@@ -1,9 +1,21 @@
 <?php get_header(); ?>
 
 <section id="banner">
-	<?php $banner_post = get_posts(['tag' => 'home-banner'])[0]; ?>
-	<?php if (!$banner_post): ?>头图缺失<?php endif; ?>
-	<?=get_the_post_thumbnail($banner_post->ID, 'full')?>
+	<?php $banner_posts = get_posts(['tag' => 'home-banner']); ?>
+	<?php if (!$banner_posts): ?>头图缺失<?php endif; ?>
+	<div id="banner-swiper" class="swiper-container">
+		<div class="swiper-wrapper">
+		<?php foreach ($banner_posts as $banner_post): ?>
+		<div class="swiper-slide">
+			<?=get_the_post_thumbnail($banner_post->ID, 'full')?>
+		</div>
+		<?php endforeach; ?>
+		</div>
+		<div class="swiper-pagination"></div>
+		<!-- If we need navigation buttons -->
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
 </section>
 
 <section id="about">
@@ -56,7 +68,7 @@
 <section id="shop">
 	<h1 class="section-title">
 		SHOP
-		<small class="section-subtitle">———— 美酒商城 ————</small>
+		<small class="section-subtitle">———— BWR商城 ————</small>
 	</h1>
 	<ul>
 		<?php foreach (get_posts(['post_type' => 'product', 'posts_per_page' => 5]) as $product): ?>
@@ -84,7 +96,7 @@
 		<small class="section-subtitle">———— 新闻资讯 ————</small>
 	</h1>
 	<?php $news_list = get_posts(['category_name' => 'news', 'posts_per_page' => -1]); ?>
-	<div class="swiper-container">
+	<div id="news-swiper" class="news-swiper-container">
 		<div class="swiper-wrapper">
 			<ul class="swiper-slide">
 			<?php foreach ($news_list as $index => $news): ?>
@@ -132,12 +144,26 @@
 </section>
 
 <script type="text/javascript">
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('#news-swiper', {
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+            nextEl: '#news-swiper .swiper-button-next',
+            prevEl: '#news-swiper .swiper-button-prev'
+        }
     });
+    var bannerSwiper = new Swiper('#banner-swiper', {
+        navigation: {
+            nextEl: '#banner-swiper .swiper-button-next',
+            prevEl: '#banner-swiper .swiper-button-prev'
+        },
+        pagination: {
+            el: '#banner-swiper .swiper-pagination',
+            type: 'bullets'
+        },
+		loop: true
+    });
+    setInterval(function() {
+        bannerSwiper.slideNext();
+	},5000)
 </script>
 
 <?php get_footer(); ?>
