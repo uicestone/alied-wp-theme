@@ -253,13 +253,22 @@ body>section {
     top: 0;
     background: rgba(0,0,0,0.8);
     overflow-y: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#estates .modal .modal-wrapper {
+    width: 60%;
+    max-height: 100vh;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #fff;
+    position: relative;
 }
 
 #estates .modal .estate-detail {
-    width: 60%;
-    margin: 10vh auto;
-    background: #fff;
-    position: relative;
+    max-height: 100vh;
+    overflow-y: auto;
 }
 
 #estates .modal .estate-detail .banner {
@@ -398,12 +407,38 @@ body>section {
 #news ul li .news-title {
     margin: 15px 0;
     font-size: 20px;
-    min-height: 72px;
+    height: 72px;
+    position: relative;
+    overflow: hidden;
+}
+
+#news ul li .news-title:after {
+    content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    height: 1.2em;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%);
 }
 
 #news ul li .news-excerpt {
     font-size: 12px;
-    min-height: 133px;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+}
+
+#news ul li .news-excerpt:after {
+    content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    height: 1.8em;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%);
 }
 
 #news {

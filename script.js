@@ -1,7 +1,7 @@
 jQuery(function($){
     $('.open-modal').click(function(){
         var id = $(this).data('id');
-        $('#modal-'+id).fadeIn(500);
+        $('#modal-'+id).css({display:'flex'}).hide().fadeIn(500);
         $('body').addClass('no-scroll');
     });
     $('.modal .close').click(function(){

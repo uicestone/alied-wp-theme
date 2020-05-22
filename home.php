@@ -48,13 +48,15 @@
 	<?php endforeach; ?>
 	<?php foreach ($estates as $estate): ?>
 		<div id="modal-<?=$estate->ID?>" class="modal">
-			<div class="estate-detail">
-				<div class="banner" style="background-image: url('<?=get_the_post_thumbnail_url($estate->ID,'full')?>')">
-					<h3 class="title"><?=get_the_title($estate->ID)?></h3>
-				</div>
-				<div class="content">
-					<h4><?=get_the_subtitle($estate->ID)?></h4>
-					<?=wpautop($estate->post_content)?>
+			<div class="modal-wrapper">
+				<div class="estate-detail">
+					<div class="banner" style="background-image: url('<?=get_the_post_thumbnail_url($estate->ID,'full')?>')">
+						<h3 class="title"><?=get_the_title($estate->ID)?></h3>
+					</div>
+					<div class="content">
+						<h4><?=get_the_subtitle($estate->ID)?></h4>
+						<?=wpautop($estate->post_content)?>
+					</div>
 				</div>
 				<button class="close"></button>
 			</div>
@@ -96,7 +98,7 @@
 		<small class="section-subtitle">———— 新闻资讯 ————</small>
 	</h1>
 	<?php $news_list = get_posts(['category_name' => 'news', 'posts_per_page' => -1]); ?>
-	<div id="news-swiper" class="news-swiper-container">
+	<div id="news-swiper" class="swiper-container">
 		<div class="swiper-wrapper">
 			<ul class="swiper-slide">
 			<?php foreach ($news_list as $index => $news): ?>
