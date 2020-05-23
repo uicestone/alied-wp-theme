@@ -106,26 +106,24 @@ footer {
 }
 
 footer .logo {
-    width: 40%;
+    width: 30%;
 }
 
 footer .contact {
-    width: 40%;
+    width: 50%;
 }
 
 footer .contact p {
     margin: 0 0;
-    font-family: "Times New Roman", serif;
-    font-size: 14px;
-    /*font-weight: bold;*/
-    line-height: 1.9;
+    font-size: 13px;
+    margin-top: 0.5em;
 }
 
 footer .qr {
-    height: 105px;
+    height: 80px;
     background: #a80912;
     color: #fff;
-    width: 105px;
+    width: 80px;
 }
 
 .entry-content {
