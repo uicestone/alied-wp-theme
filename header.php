@@ -11,7 +11,7 @@
 <body <?php body_class();?>>
 	<header>
 		<div class="logo">
-			<a href="<?=site_url()?>"><img src="<?=get_stylesheet_directory_uri()?>/img/logo.png"></a>
+			<a href="<?=site_url()?>"><img src="<?=get_stylesheet_directory_uri()?>/img/logo-bwr.png"></a>
 		</div>
 		<?php wp_nav_menu(array('theme_location' => 'primary', 'menu_class' => 'menu', 'container' => 'nav', 'container_class' => 'primary-navigation')); ?>
 	</header>
