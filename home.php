@@ -73,13 +73,12 @@
 		<small class="section-subtitle">———— BWR商城 ————</small>
 	</h1>
 	<ul>
-		<?php foreach (get_posts(['post_type' => 'product', 'posts_per_page' => 5]) as $product): ?>
+		<?php foreach (get_posts(['post_type' => 'product', 'product_tag' => 'home-product', 'posts_per_page' => -1]) as $product): ?>
 		<li>
-			<a href="<?=get_the_permalink($product->ID)?>">
+			<a href="<?=get_term_link(get_the_terms($product->ID, 'product_cat')[0],'product_cat')?>">
 				<div class="product-image"><?=get_the_post_thumbnail($product->ID)?></div>
 				<div class="product-name">
-					<h2><?=get_the_title($product->ID)?></h2>
-					<h2><?=get_the_subtitle($product->ID)?></h2>
+					<h2><?=get_the_terms($product->ID, 'product_cat')[0]->name?></h2>
 				</div>
 			</a>
 		</li>
@@ -142,6 +141,7 @@
 	</h1>
 	<div>
 		<img src="<?=get_stylesheet_directory_uri()?>/img/25-cook-rd.png" style="width:100%">
+		<?=do_shortcode('[contact-form-7 id="1930" title="联系我们 Contact"]')?>
 	</div>
 </section>
 

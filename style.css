@@ -28,6 +28,11 @@ body.no-scroll {
     overflow-y: hidden;
 }
 
+@font-face {
+    font-family: "Courier BoldOblique";
+    src: url("fonts/Courier-BoldOblique.otf") format("opentype");
+}
+
 img {
     max-width: 100%;
 }
@@ -121,9 +126,13 @@ footer .contact p {
 
 footer .qr {
     height: 80px;
-    background: #a80912;
-    color: #fff;
     width: 80px;
+}
+
+footer .qr img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .entry-content {
@@ -157,9 +166,9 @@ body>section {
 
 .section-title {
     color: #8d221f;
-    font-size: 96px;
+    font-size: 72px;
     text-align: center;
-    font-family: "Songti SC", "STSong", serif;
+    font-family: "Courier BoldOblique", "Songti SC", "STSong", serif;
     margin-top: 100px;
 }
 
@@ -539,6 +548,42 @@ body>section {
 
 #news .prev {
     left: 30px;
+}
+
+#contact form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#contact form>.col {
+    width: 49%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+}
+
+#contact form>.col label {
+    width: 100%;
+}
+
+#contact form textarea {
+    height: 164px;
+}
+
+#contact form .wpcf7-submit {
+    margin-top: 5px;
+    width: 100%;
+}
+
+#contact form>.col label input {
+    width: 100%;
+}
+
+#contact form div.wpcf7-response-output {
+    width: 100%;
+    order: -1;
 }
 
 /* Store style */
