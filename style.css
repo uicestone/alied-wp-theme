@@ -101,6 +101,40 @@ ul.menu li a {
     font-weight: bold;
 }
 
+.nav-tool-icon img {
+    width: 23px;
+    margin-top: 14px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+header .search-bar {
+    position: fixed;
+    right: 0;
+    background: white;
+    top: 75px;
+    width: 385px;
+    display: flex;
+    align-items: center;
+}
+
+header .search-bar .icon {
+    margin: 0 10px;
+}
+
+header .search-bar .icon img {
+    width: 20px;
+}
+
+header .search-bar input, header .search-bar form {
+    background: transparent;
+    width: 100%;
+}
+
+header .search-bar form {
+    margin-bottom: 0;
+}
+
 footer {
     padding: 0 20vw;
     display: flex;
@@ -601,6 +635,10 @@ body>section {
     color: #fff;
 }
 
+.woocommerce-notices-wrapper {
+    width: 100%;
+}
+
 .products {
     display: flex;
     width: 80%;
@@ -650,6 +688,7 @@ body>section {
 
 .storefront-sorting {
     display: flex;
+    flex-wrap: wrap;
     width: 80%;
     margin: auto;
 }
@@ -789,9 +828,6 @@ body>section {
     }
     .storefront-sorting {
         flex-wrap: wrap;
-    }
-    .woocommerce-notices-wrapper {
-        width: 100%;
     }
     .entry-content {
         padding: 5vh 5vw 0;

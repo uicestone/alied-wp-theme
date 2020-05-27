@@ -8,4 +8,8 @@ jQuery(function($){
         $('.modal').fadeOut(500);
         $('body').removeClass('no-scroll');
     });
+    $('.toggle-search-bar').click(function() {
+        $('.search-bar').toggle();
+        return false;
+    });
 });
