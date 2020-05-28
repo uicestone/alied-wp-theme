@@ -28,18 +28,18 @@ show_admin_bar(false);
 add_post_type_support('product', 'wps_subtitle');
 
 add_action('wp', function() {
-	wp_register_style('style', get_stylesheet_directory_uri() . '/style.css', array(), time());
+	wp_register_style('alied-style', get_stylesheet_directory_uri() . '/style.css', array(), time());
 	wp_register_style('swiper', get_stylesheet_directory_uri() . '/lib/swiper.min.css', array(), '5.4.0');
-	wp_register_script('script', get_stylesheet_directory_uri() . '/script.js', array(), time());
+	wp_register_script('alied-script', get_stylesheet_directory_uri() . '/script.js', array('jquery'), time());
 	wp_register_script('swiper', get_stylesheet_directory_uri() . '/lib/swiper.min.js', array(), '5.4.0');
 });
 
 add_action('wp_enqueue_scripts', function(){
 	sf_child_theme_dequeue_style();
 	wp_enqueue_style('swiper');
-	wp_enqueue_style('style');
+	wp_enqueue_style('alied-style');
 	wp_enqueue_script('swiper');
-	wp_enqueue_script('script');
+	wp_enqueue_script('alied-script');
 }, 40);
 
 add_action('after_setup_theme', function () {
