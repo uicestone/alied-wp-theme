@@ -8,5 +8,6 @@
 	</div>
 	<div class="qr"><?=get_the_post_thumbnail($address_post->ID, 'full')?></div>
 </footer>
+<?php wp_footer(); ?>
 </body>
 </html>
