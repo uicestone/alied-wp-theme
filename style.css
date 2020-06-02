@@ -229,8 +229,12 @@ body>section {
 
 #banner img {
     width: 100%;
-    min-height: 40vh;
+    min-height: 30vh;
     object-fit: cover;
+}
+
+#banner .mobile-img {
+    display: none;
 }
 
 #about {
@@ -738,6 +742,12 @@ body>section {
     }
     .section-title small {
         font-size: 18px;
+    }
+    #banner img {
+        display: none;
+    }
+    #banner .mobile-img {
+        display: block;
     }
     body>section {
         padding: 0 10vw;

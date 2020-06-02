@@ -8,6 +8,7 @@
 		<?php foreach ($banner_posts as $banner_post): ?>
 		<div class="swiper-slide">
 			<?=get_the_post_thumbnail($banner_post->ID, 'full')?>
+			<img class="mobile-img" src="<?=get_field('mobile_poster', $banner_post->ID)?>">
 		</div>
 		<?php endforeach; ?>
 		</div>
