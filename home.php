@@ -72,6 +72,7 @@
 	<h1 class="section-title">
 		SHOP
 		<small class="section-subtitle">———— BWR商城 ————</small>
+		<small class="section-subtitle">酒牌号码Licence No 36150772</small>
 	</h1>
 	<ul>
 		<?php foreach (get_posts(['post_type' => 'product', 'product_tag' => 'home-product', 'posts_per_page' => -1]) as $product): ?>
