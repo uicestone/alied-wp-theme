@@ -48,3 +48,40 @@ add_action('after_setup_theme', function () {
 	// add_image_size('headline', 1600, 700, true);
 	// add_image_size('post-thumbnail', 1280, 720, true);
 });
+
+add_filter( 'woocommerce_min_password_strength', function ( $strength ) {
+	return 1;
+}, 10, 1);
+
+/**
+ * Remove the password strength meter script from the scripts queue
+ * you can also use wp_print_scripts hook
+ */
+// add_action( 'wp_enqueue_scripts', function () {
+// 	wp_dequeue_script( 'wc-password-strength-meter' );
+// }, 10 );
+
+// add_action( 'wp_enqueue_scripts',  function () {
+// 	wp_localize_script( 'wc-password-strength-meter', 'pwsL10n', array(
+// 		'short' => 'Too short',
+// 		'bad' => 'Too bad',
+// 		'good' => 'Better but not enough',
+// 		'strong' => 'Better',
+// 		'mismatch' => 'Your passwords do not match, please re-enter them.'
+// 	) );
+// }, 9999 );
+
+add_filter( 'woocommerce_get_script_data', function ( $params, $handle  ) {
+
+	if( $handle === 'wc-password-strength-meter' ) {
+		$params = array_merge( $params, array(
+			'min_password_strength' => 1,
+			'i18n_password_error' => '密码必须是8位以上字母、数字的组合，并且不是任何常见密码',
+			'i18n_password_hint' => ''
+		) );
+	}
+	return $params;
+
+} , 20, 2 );
+
+
