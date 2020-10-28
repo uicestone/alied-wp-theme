@@ -290,6 +290,7 @@ body>section {
     display: flex;
     justify-content: center;
     align-items: center;
+    align-content: center;
 }
 
 #estates dl dd h2 {
@@ -732,7 +733,7 @@ body>section {
 }
 
 /* Mobile style */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 700px) {
     .swiper-button-next, .swiper-button-prev {
         display: none;
     }
@@ -762,6 +763,7 @@ body>section {
         font-size: 23px;
         margin-right: 0;
         text-align: center;
+        width: 100%;
     }
     #estates dl dd h3 {
         font-size: 20px;
