@@ -45,7 +45,7 @@ add_action('wp_enqueue_scripts', function(){
 add_action('after_setup_theme', function () {
 	register_nav_menu('primary', '主导航');
 	add_theme_support('post-thumbnails');
-	// add_image_size('headline', 1600, 700, true);
+	add_image_size('home-banner', 1600, 666, true);
 	// add_image_size('post-thumbnail', 1280, 720, true);
 });
 
