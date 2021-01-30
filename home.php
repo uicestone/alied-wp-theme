@@ -8,7 +8,7 @@
 		<?php foreach ($banner_posts as $banner_post): ?>
 		<div class="swiper-slide">
 			<img class="mobile-img" src="<?=get_field('mobile_poster', $banner_post->ID)?>">
-			<?=get_the_post_thumbnail($banner_post->ID, 'home-banner')?>
+			<a href="<?=get_field('link', $banner_post->ID) ?: '#'?>"><?=get_the_post_thumbnail($banner_post->ID, 'home-banner')?></a>
 		</div>
 		<?php endforeach; ?>
 		</div>
@@ -80,7 +80,7 @@
 			<a href="<?=get_term_link(get_the_terms($product->ID, 'product_cat')[0],'product_cat')?>">
 				<div class="product-image"><?=get_the_post_thumbnail($product->ID)?></div>
 				<div class="product-name">
-					<h2><?=get_the_terms($product->ID, 'product_cat')[0]->name?></h2>
+					<h2><?=str_replace("/", "<br>", get_the_terms($product->ID, 'product_cat')[0]->name)?></h2>
 				</div>
 			</a>
 		</li>
