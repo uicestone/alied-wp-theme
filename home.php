@@ -1,173 +1,163 @@
-<?php get_header(); ?>
+<?php
+if ($_POST['user_login']) {
+  $user = wp_authenticate($_POST['user_login'], $_POST['user_pass']);
 
-<section id="banner">
-	<?php $banner_posts = get_posts(['tag' => 'home-banner']); ?>
-	<?php if (!$banner_posts): ?>头图缺失<?php endif; ?>
-	<div id="banner-swiper" class="swiper-container">
-		<div class="swiper-wrapper">
-		<?php foreach ($banner_posts as $banner_post): ?>
-		<div class="swiper-slide">
-			<img class="mobile-img" src="<?=get_field('mobile_poster', $banner_post->ID)?>">
-			<a href="<?=get_field('link', $banner_post->ID) ?: '#'?>"><?=get_the_post_thumbnail($banner_post->ID, 'home-banner')?></a>
+  if(is_a($user, 'WP_Error')){
+    exit(array_values($user->errors)[0][0]);
+  }
+
+  wp_set_auth_cookie($user->ID, isset($_POST['remember']));
+  wp_set_current_user($user->ID);
+  header('Location: ' . site_url()); exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title><?php bloginfo('sitename'); ?></title>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class();?>>
+
+<div id="topbar">
+	<!--<div id="logo"></div>-->
+	<div id="menu-toggle">
+		<span>MENU</span>
+		<b>
+			<i></i>
+			<i></i>
+			<i></i>
+		</b>
+	</div>
+</div>
+
+<aside id="menu" style="display: none">
+  <div class="blur-bg"></div>
+	<ul>
+		<li>
+			<a href="#about">ABOUT US</a>
+		</li>
+		<li>
+			<a href="#shop">SHOP</a>
+		</li>
+		<li>
+			<a href="#contact">CONTACT US</a>
+		</li>
+		<li>
+			<a href="#home">LOGIN</a>
+		</li>
+	</ul>
+</aside>
+
+<div class="modal" id="menu-modal" style="display: none"></div>
+
+<section id="home">
+	<div class="modal">
+		<div>
+			<div id="warning">
+        <img src="<?=get_stylesheet_directory_uri()?>/img/logo-rw.png">
+				<h3>WARNING:</h3>
+				<p>
+					Under the Liquor Control Reform Act 1998 it is an offence:
+					<br />To supply alcohol to a person under the age of 18 years (Penalty exceeds $ 17,000)
+					<br />For a person under the age of 18 years to purchase or receive liquor. (Penalty exceeds $ 7,000)
+				</p>
+			</div>
+      <?php if (is_user_logged_in()): ?>
+        <div id="welcome">Welcome, <a href="<?=site_url()?>/my-account/"><?=wp_get_current_user()->display_name?></a></div>
+      <?php else: ?>
+			<form method="post">
+				<input placeholder="User ID" name="user_login" />
+				<input placeholder="Password" type="password" name="user_pass" />
+				<div class="submit">
+					<button type="submit">LOGIN</button>
+					<a href="<?=site_url()?>/my-account/">REGISTER</a>
+				</div>
+			</form>
+      <?php endif; ?>
 		</div>
-		<?php endforeach; ?>
-		</div>
-		<div class="swiper-pagination"></div>
-		<!-- If we need navigation buttons -->
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
 	</div>
 </section>
 
 <section id="about">
-	<h1 class="section-title">
-		ABOUT US
-		<small class="section-subtitle">———— 关于我们 ————</small>
-	</h1>
-	<div>
-		<?=wpautop(get_page_by_path('about')->post_content)?>
-	</div>
+	<h2>about us</h2>
+  <div class="container">
+    <?=wpautop(get_page_by_path("about")->post_content)?>
+  </div>
 </section>
-
-<hr>
-
-<section id="estates">
-	<h1 class="section-title">
-		RED WINE
-		<small class="section-subtitle">———— 精品酒庄 ————</small>
-	</h1>
-	<div>
-	<?php $estates = get_posts(['category_name' => 'estates', 'posts_per_page' => -1, 'order' => 'asc']);?>
-	<?php foreach ($estates as $estate): ?>
-		<dl class="open-modal" data-id="<?=$estate->ID?>">
-			<dt><?=get_the_post_thumbnail($estate->ID)?></dt>
-			<dd>
-				<h2><?=get_the_title($estate->ID)?></h2>
-				<h3><?=get_the_subtitle($estate->ID)?></h3>
-			</dd>
-		</dl>
-	<?php endforeach; ?>
-	<?php foreach ($estates as $estate): ?>
-		<div id="modal-<?=$estate->ID?>" class="modal">
-			<div class="modal-wrapper">
-				<div class="estate-detail">
-					<div class="banner" style="background-image: url('<?=get_the_post_thumbnail_url($estate->ID,'full')?>')">
-						<h3 class="title"><?=get_the_title($estate->ID)?></h3>
-					</div>
-					<div class="content">
-						<h4><?=get_the_subtitle($estate->ID)?></h4>
-						<?=wpautop($estate->post_content)?>
-					</div>
-				</div>
-				<button class="close"></button>
-			</div>
-		</div>
-	<?php endforeach; ?>
-	</div>
-</section>
-
-<hr>
 
 <section id="shop">
-	<h1 class="section-title">
-		SHOP
-		<small class="section-subtitle">———— BWR商城 ————</small>
-		<small class="section-subtitle">酒牌号码Licence No 36150772</small>
-	</h1>
-	<ul>
-		<?php foreach (get_posts(['post_type' => 'product', 'product_tag' => 'home-product', 'posts_per_page' => -1]) as $product): ?>
-		<li>
-			<a href="<?=get_term_link(get_the_terms($product->ID, 'product_cat')[0],'product_cat')?>">
-				<div class="product-image"><?=get_the_post_thumbnail($product->ID)?></div>
-				<div class="product-name">
-					<h2><?=str_replace("/", "<br>", get_the_terms($product->ID, 'product_cat')[0]->name)?></h2>
-				</div>
-			</a>
-		</li>
-		<?php endforeach; ?>
-	</ul>
-	<div class="actions">
-		<a class="more" href="<?=site_url('shop')?>">MORE</a>
-	</div>
-</section>
-
-<hr>
-
-<section id="news">
-	<h1 class="section-title">
-		NEWS
-		<small class="section-subtitle">———— 新闻资讯 ————</small>
-	</h1>
-	<?php $news_list = get_posts(['category_name' => 'news', 'posts_per_page' => -1]); ?>
-	<div id="news-swiper" class="swiper-container">
-		<div class="swiper-wrapper">
-			<ul class="swiper-slide">
-			<?php foreach ($news_list as $index => $news): ?>
-			<?php if ($index && $index % 4 === 0): ?>
-			</ul>
-			<ul class="swiper-slide">
-			<?php endif; ?>
-			<li class="open-modal" data-id="<?=$news->ID?>">
-				<div class="news-poster"><?=get_the_post_thumbnail($news->ID)?></div>
-				<div class="news-caption">
-					<div class="news-date"><?=get_the_date('',$news->ID)?></div>
-					<h2 class="news-title"><?=get_the_title($news->ID)?></h2>
-					<div class="news-excerpt"><?=get_the_excerpt($news->ID)?></div>
-				</div>
-			</li>
-			<?php endforeach; ?>
-			</ul>
+	<h2>shop</h2>
+	<div id="categories">
+		<div class="category">
+			<a href="<?=site_url()?>/product-category/chinese-spirits/"><img src="<?=get_stylesheet_directory_uri()?>/img/chinese spirits.png" /></a>
+			<a href="<?=site_url()?>/product-category/chinese-spirits/"><h3>Chinese Spirits</h3></a>
+		</div>
+		<div class="category">
+			<a href="<?=site_url()?>/product-category/烈酒/"><img src="<?=get_stylesheet_directory_uri()?>/img/spirits.png" /></a>
+			<a href="<?=site_url()?>/product-category/烈酒/"><h3>Spirits</h3>
+		</div>
+		<div class="category">
+			<a href="<?=site_url()?>/product-category/champagne/"><img src="<?=get_stylesheet_directory_uri()?>/img/champagne.png" /></a>
+			<a href="<?=site_url()?>/product-category/champagne/"><h3>Champagne</h3></a>
+		</div>
+		<div class="category">
+			<a href="<?=site_url()?>/product-category/wine/"><img src="<?=get_stylesheet_directory_uri()?>/img/wine.png" /></a>
+			<a href="<?=site_url()?>/product-category/wine/"><h3>Wine</h3></a>
+		</div>
+		<div class="category">
+			<a href="<?=site_url()?>/product-category/wine-vessel/"><img src="<?=get_stylesheet_directory_uri()?>/img/wine vessel.png" /></a>
+			<h3><a href="<?=site_url()?>/product-category/wine-vessel/">Wine Vessel</a></h3>
 		</div>
 	</div>
-	<div class="swiper-button-next"></div>
-	<div class="swiper-button-prev"></div>
-	<?php foreach ($news_list as $news): ?>
-		<div id="modal-<?=$news->ID?>" class="modal">
-			<div class="news-detail">
-				<?=get_the_post_thumbnail($news->ID, 'full')?>
-				<div class="content">
-					<h4 class="date"><?=get_the_date('',$news->ID)?></h4>
-					<h3 class="title"><?=get_the_title($news->ID)?></h3>
-					<?=wpautop(do_shortcode($news->post_content))?>
-				</div>
-				<button class="close"></button>
-			</div>
-		</div>
-	<?php endforeach; ?>
 </section>
 
 <section id="contact">
-	<h1 class="section-title">
-		CONTACT US
-		<small class="section-subtitle">———— 联系我们 ————</small>
-	</h1>
-	<div>
-		<img src="<?=get_stylesheet_directory_uri()?>/img/25-cook-rd.png" style="width:100%">
-		<?=do_shortcode('[contact-form-7 id="1930" title="联系我们 Contact"]')?>
-	</div>
+	<h2>contact us</h2>
+  <div class="container">
+    <iframe
+        loading="lazy"
+        allowfullscreen
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDPQj8cp29qnlKkF5VWMQTUFSeOglrSKgk&q=25+COOK+ROAD,MITCHAM+VIC+3132+AUS">
+    </iframe>
+    <div id="contact-info">
+      <img src="<?=get_stylesheet_directory_uri()?>/img/logo-bwr.png">
+      <div id="company-info">
+        <p>Australian Liquor Import Export Distributor Pty Ltd</p>
+        <p>BWR Liquer Supplies Pty Ltd</p>
+        <p>Address : Unit2, 25 Cook road，Mitcham Vic 3132 Australia</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<script type="text/javascript">
-    var swiper = new Swiper('#news-swiper', {
-        navigation: {
-            nextEl: '#news-swiper ~ .swiper-button-next',
-            prevEl: '#news-swiper ~ .swiper-button-prev'
-        }
-    });
-    var bannerSwiper = new Swiper('#banner-swiper', {
-        navigation: {
-            nextEl: '#banner-swiper .swiper-button-next',
-            prevEl: '#banner-swiper .swiper-button-prev'
-        },
-        pagination: {
-            el: '#banner-swiper .swiper-pagination',
-            type: 'bullets'
-        },
-		loop: true
-    });
-    setInterval(function() {
-        bannerSwiper.slideNext();
-	},5000)
+<script>
+	jQuery(function ($) {
+	    $('#menu-toggle').click(function () {
+	        $('#menu:visible,#menu-modal:visible').fadeOut(700);
+	        // $('#home .modal:visible').fadeOut(700);
+          $('#menu:hidden,#menu-modal:hidden').fadeIn(700);
+		  });
+
+      $('#menu li').click(function () {
+          $('#menu:visible,#menu-modal:visible').fadeOut(700);
+      });
+
+      $('#menu-modal').click(function () {
+          $('#menu:visible,#menu-modal:visible').fadeOut(700);
+		  });
+
+      // $('[href="#login"]').click(function () {
+      //     $('#home .modal:hidden').fadeIn(700);
+      //     $('#menu:visible,#menu-modal:visible').fadeOut(700);
+		  // });
+	})
 </script>
 
-<?php get_footer(); ?>
+<?php wp_footer(); ?>
+</body>
+</html>
