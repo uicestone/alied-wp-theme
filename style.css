@@ -85,8 +85,13 @@ header .logo {
     margin-right: 30px;
 }
 
+.primary-navigation {
+    flex: 1;
+}
+
 .primary-navigation ul {
     display: flex;
+    justify-content: flex-end;
     height: 100%;
 }
 
@@ -282,6 +287,7 @@ aside#menu .blur-bg {
     right: 0;
     left: 0;
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     z-index: -1;
 }
 
