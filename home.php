@@ -92,26 +92,28 @@ if ($_POST['user_login']) {
 
 <section id="shop">
 	<h2>shop</h2>
-	<div id="categories">
-		<div class="category">
-			<a href="<?=site_url()?>/product-category/chinese-spirits/"><img src="<?=get_stylesheet_directory_uri()?>/img/chinese spirits.png" /></a>
-			<a href="<?=site_url()?>/product-category/chinese-spirits/"><h3>Chinese Spirits</h3></a>
-		</div>
-		<div class="category">
-			<a href="<?=site_url()?>/product-category/烈酒/"><img src="<?=get_stylesheet_directory_uri()?>/img/spirits.png" /></a>
-			<a href="<?=site_url()?>/product-category/烈酒/"><h3>Spirits</h3>
-		</div>
-		<div class="category">
-			<a href="<?=site_url()?>/product-category/champagne/"><img src="<?=get_stylesheet_directory_uri()?>/img/champagne.png" /></a>
-			<a href="<?=site_url()?>/product-category/champagne/"><h3>Champagne</h3></a>
-		</div>
-		<div class="category">
-			<a href="<?=site_url()?>/product-category/wine/"><img src="<?=get_stylesheet_directory_uri()?>/img/wine.png" /></a>
-			<a href="<?=site_url()?>/product-category/wine/"><h3>Wine</h3></a>
-		</div>
-		<div class="category">
-			<a href="<?=site_url()?>/product-category/wine-vessel/"><img src="<?=get_stylesheet_directory_uri()?>/img/wine vessel.png" /></a>
-			<h3><a href="<?=site_url()?>/product-category/wine-vessel/">Wine Vessel</a></h3>
+	<div class="container">
+		<div id="categories">
+			<div class="category">
+				<a href="<?=site_url()?>/product-category/chinese-spirits/"><img src="<?=get_stylesheet_directory_uri()?>/img/chinese spirits.png" /></a>
+				<a href="<?=site_url()?>/product-category/chinese-spirits/"><h3>Chinese Spirits</h3></a>
+			</div>
+			<div class="category">
+				<a href="<?=site_url()?>/product-category/烈酒/"><img src="<?=get_stylesheet_directory_uri()?>/img/spirits.png" /></a>
+				<a href="<?=site_url()?>/product-category/烈酒/"><h3>Spirits</h3></a>
+			</div>
+			<div class="category">
+				<a href="<?=site_url()?>/product-category/champagne/"><img src="<?=get_stylesheet_directory_uri()?>/img/champagne.png" /></a>
+				<a href="<?=site_url()?>/product-category/champagne/"><h3>Champagne</h3></a>
+			</div>
+			<div class="category">
+				<a href="<?=site_url()?>/product-category/wine/"><img src="<?=get_stylesheet_directory_uri()?>/img/wine.png" /></a>
+				<a href="<?=site_url()?>/product-category/wine/"><h3>Wine</h3></a>
+			</div>
+			<div class="category">
+				<a href="<?=site_url()?>/product-category/wine-vessel/"><img src="<?=get_stylesheet_directory_uri()?>/img/wine vessel.png" /></a>
+				<h3><a href="<?=site_url()?>/product-category/wine-vessel/">Wine Vessel</a></h3>
+			</div>
 		</div>
 	</div>
 </section>
@@ -125,7 +127,7 @@ if ($_POST['user_login']) {
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDPQj8cp29qnlKkF5VWMQTUFSeOglrSKgk&q=25+COOK+ROAD,MITCHAM+VIC+3132+AUS">
     </iframe>
     <div id="contact-info">
-      <img src="<?=get_stylesheet_directory_uri()?>/img/logo-bwr.png">
+      <img src="<?=get_stylesheet_directory_uri()?>/img/logo-rw.png">
       <div id="company-info">
         <p>Australian Liquor Import Export Distributor Pty Ltd</p>
         <p>BWR Liquer Supplies Pty Ltd</p>
