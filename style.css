@@ -51,7 +51,14 @@ body.no-scroll {
     font-display: swap;
 }
 
-
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('fonts/CenturyGothic-Bold.woff2') format('woff2'),
+    url('fonts/CenturyGothic-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
 
 img {
     max-width: 100%;
@@ -83,6 +90,74 @@ a {
 
 a:focus {
     outline: none;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 17px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: rgba(0,0,0,0.1);
+    border:1px solid rgba(255,255,255,0.7);
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+    background: rgba(0,0,0,0.5);
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: rgba(0,0,0,0.1);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid rgba(255,255,255,0.7);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 /* Cross-page style */
@@ -332,6 +407,89 @@ aside li {
     text-shadow: 1px 1px 1px #bfbfbf;
 }
 
+#age-confirm {
+    z-index: 20;
+    background: black;
+    display: flex;
+    background: url("img/home-welcome-bg1.jpg");
+    background-size: cover;
+    font-weight: lighter;
+    text-transform: uppercase;
+    overflow-y: auto;
+}
+
+#age-confirm .container {
+    width: 33%;
+    min-width: 720px;
+    margin: auto;
+    /* height: 100vh; */
+    /* display: flex; */
+    color: white;
+    text-align: center;
+}
+
+#age-confirm img {
+    margin: 30px auto 50px;
+    width: 50%;
+}
+
+#age-confirm input[type="number"] {
+    color: white;
+    display: block;
+    margin: auto;
+    background: none;
+    border-bottom: 1px solid white;
+    font-size: 36px;
+    width: 50%;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 20px;
+    letter-spacing: 15px;
+    padding-left: 15px;
+    outline: none;
+}
+
+#age-confirm input::-webkit-outer-spin-button,
+#age-confirm input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+#age-confirm input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#age-confirm .checkbox-container {
+    width: 50%;
+    margin: auto;
+    text-align: left;
+}
+
+#age-confirm button {
+    display: block;
+    margin: 40px auto 20px;
+    width: 50%;
+    background: #af8950;
+    color: white;
+    font-size: 28px;
+    padding: 0;
+    border-radius: 10px;
+}
+
+#age-confirm .remember-warning {
+    width: 50%;
+    margin: auto;
+}
+
+#age-confirm h3 {
+    color: white;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    width: 33%;
+    margin: 40px auto;
+}
+
 section {
     min-height: 100vh;
 }
@@ -361,6 +519,43 @@ section>.container {
 
 section>.container h2, section>.container h3 {
     color: white;
+}
+
+section#welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url("img/home-welcome-bg2.jpg") center;
+    background-size: cover;
+}
+
+section#welcome .welcome-message {
+    width: 33%;
+    border-left: 1px solid white;
+    padding-left: 30px;
+    min-width: 500px;
+}
+
+.welcome-message img {
+    width: 40%;
+}
+
+.welcome-message .slogan {
+    color: white;
+    font-size: 32px;
+    font-family: "Century Gothic", sans-serif;
+    letter-spacing: 1px;
+}
+
+.welcome-message a {
+    color: white;
+    background: #A70C14;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
 }
 
 section#home {
@@ -481,10 +676,9 @@ section#shop .category {
 
 section#shop .category h3 {
     color: white;
-    font-family: "Malayalam MN", sans-serif;
     font-size: 16px;
-    font-weight: normal;
-    /*font-family: Arial, Helvetica, sans-serif;*/
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     margin: 10px 0;
 }
@@ -515,7 +709,8 @@ section#contact #contact-info {
     justify-content: flex-end;
     flex-direction: column;
     margin-left: 20px;
-    font-family: "Malayalam MN", sans-serif;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
 }
 
 section#contact #contact-info img {

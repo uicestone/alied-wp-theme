@@ -55,11 +55,41 @@ if ($_POST['user_login']) {
 
 <div class="modal" id="menu-modal" style="display: none"></div>
 
+<div class="modal" id="age-confirm" style="display: none">
+	<div class="container">
+		<img src="<?=get_stylesheet_directory_uri()?>/img/logo-rw.png">
+		<p>Please enter your year of birth</p>
+		<input type="number" placeholder="YYYY">
+		<label class="checkbox-container">
+			Remember Me
+			<input type="checkbox">
+			<span class="checkmark"></span>
+		</label>
+		<button>ENTER</button>
+		<p class="remember-warning">Do not use 'remember me' option if this is a public terminal or if it's shared with anyone under the legal drinking age in your area.</p>
+		<h3>WARNING:</h3>
+		<p>
+			Under the Liquor Control Reform Act 1998 it is an offence:
+			<br />To supply alcohol to a person under the age of 18 years (Penalty exceeds $ 17,000)
+			<br />For a person under the age of 18 years to purchase or receive liquor. (Penalty exceeds $ 7,000)
+		</p>
+	</div>
+</div>
+
+<section id="welcome">
+	<div class="welcome-message">
+		<img src="<?=get_stylesheet_directory_uri()?>/img/logo-rw.png">
+		<h1 class="slogan">DELIVERING FROM LOCAL<br>
+			PRODUCERS TO YOUR HOME</h1>
+		<a href="#shop">SHOP NOW</a>
+	</div>
+</section>
+
 <section id="home">
 	<div class="modal">
 		<div>
 			<div id="warning">
-        <img src="<?=get_stylesheet_directory_uri()?>/img/logo-rw.png">
+		        <img src="<?=get_stylesheet_directory_uri()?>/img/logo-rw.png">
 				<h3>WARNING:</h3>
 				<p>
 					Under the Liquor Control Reform Act 1998 it is an offence:
@@ -112,7 +142,7 @@ if ($_POST['user_login']) {
 			</div>
 			<div class="category">
 				<a href="<?=site_url()?>/product-category/wine-vessel/"><img src="<?=get_stylesheet_directory_uri()?>/img/wine vessel.png" /></a>
-				<h3><a href="<?=site_url()?>/product-category/wine-vessel/">Wine Vessel</a></h3>
+				<a href="<?=site_url()?>/product-category/wine-vessel/"><h3>Wine Vessel</h3></a>
 			</div>
 		</div>
 	</div>
@@ -139,11 +169,42 @@ if ($_POST['user_login']) {
 
 <script>
 	jQuery(function ($) {
+        var yob = window.localStorage.getItem("yearOfBirth");
+
+	    function checkYob(yob) {
+            if (!yob || (new Date()).getFullYear() - yob < 18) {
+                $("#age-confirm").show();
+                $('body').css({'overflow-y':'hidden'});
+            } else {
+                $("#age-confirm").fadeOut(1000);
+                $('body').css({'overflow-y':'auto'});
+			}
+		}
+
+		checkYob(yob);
+
+        $('#age-confirm button').click(function(){
+            yob = +$('#age-confirm input[type="number"]').val();
+            if (yob && yob <= (new Date()).getFullYear() && yob >= 1900) {
+                var rememberYob = $('#age-confirm input[type="checkbox"]').prop("checked");
+                if (rememberYob) {
+                    window.localStorage.setItem("yearOfBirth", yob);
+				}
+                checkYob(yob);
+			} else {
+                alert('Invalid Year of Birth');
+			}
+		});
+
+		$('#welcome img').click(function () {
+		    window.localStorage.clear();
+		});
+
 	    $('#menu-toggle').click(function () {
 	        $('#menu:visible,#menu-modal:visible').fadeOut(700);
 	        // $('#home .modal:visible').fadeOut(700);
-          $('#menu:hidden,#menu-modal:hidden').fadeIn(700);
-		  });
+            $('#menu:hidden,#menu-modal:hidden').fadeIn(700);
+	    });
 
       $('#menu li').click(function () {
           $('#menu:visible,#menu-modal:visible').fadeOut(700);
