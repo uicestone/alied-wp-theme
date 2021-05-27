@@ -129,12 +129,12 @@ if ($_POST['user_login']) {
 				<a href="<?=site_url()?>/product-category/chinese-spirits/"><h3>Chinese Spirits</h3></a>
 			</div>
 			<div class="category">
-				<a href="<?=site_url()?>/product-category/烈酒/"><img src="<?=get_stylesheet_directory_uri()?>/img/spirits.png" /></a>
-				<a href="<?=site_url()?>/product-category/烈酒/"><h3>Spirits</h3></a>
+				<a href="<?=site_url()?>/product-category/spirits/"><img src="<?=get_stylesheet_directory_uri()?>/img/spirits.png" /></a>
+				<a href="<?=site_url()?>/product-category/spirits/"><h3>Spirits</h3></a>
 			</div>
 			<div class="category">
-				<a href="<?=site_url()?>/product-category/champagne/"><img src="<?=get_stylesheet_directory_uri()?>/img/champagne.png" /></a>
-				<a href="<?=site_url()?>/product-category/champagne/"><h3>Champagne</h3></a>
+				<a href="<?=site_url()?>/product-category/sake/"><img src="<?=get_stylesheet_directory_uri()?>/img/champagne.png" /></a>
+				<a href="<?=site_url()?>/product-category/sake/"><h3>Sake</h3></a>
 			</div>
 			<div class="category">
 				<a href="<?=site_url()?>/product-category/wine/"><img src="<?=get_stylesheet_directory_uri()?>/img/wine.png" /></a>
