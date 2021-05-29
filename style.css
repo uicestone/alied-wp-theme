@@ -414,13 +414,13 @@ aside li {
     background: url("img/home-welcome-bg1.jpg");
     background-size: cover;
     font-weight: lighter;
+    font-size: 0.8vw;
     text-transform: uppercase;
-    overflow-y: auto;
 }
 
 #age-confirm .container {
     width: 33%;
-    min-width: 720px;
+    min-width: 540px;
     margin: auto;
     /* height: 100vh; */
     /* display: flex; */
@@ -472,7 +472,7 @@ aside li {
     width: 50%;
     background: #af8950;
     color: white;
-    font-size: 28px;
+    font-size: 1.8em;
     padding: 0;
     border-radius: 10px;
 }
@@ -526,7 +526,7 @@ section#welcome {
     justify-content: center;
     align-items: center;
     position: relative;
-    background: url("img/home-welcome-bg2.jpg") center;
+    background: url("img/home-welcome-bg2.jpg") center fixed;
     background-size: cover;
 }
 
@@ -646,7 +646,9 @@ section#about {
 
 section#about .container {
     /*max-width: 960px;*/
-    /*width: 60vw;*/
+    width: 60vw;
+    padding: 20px 0;
+    text-align: justify;
 }
 
 section#shop {

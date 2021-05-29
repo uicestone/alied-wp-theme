@@ -48,7 +48,7 @@ if ($_POST['user_login']) {
 			<a href="#contact">CONTACT US</a>
 		</li>
 		<li>
-			<a href="#home">LOGIN</a>
+			<a href="<?=site_url()?>/my-account/">LOGIN</a>
 		</li>
 	</ul>
 </aside>
@@ -85,7 +85,8 @@ if ($_POST['user_login']) {
 	</div>
 </section>
 
-<section id="home">
+
+<!--<section id="home">
 	<div class="modal">
 		<div>
 			<div id="warning">
@@ -111,7 +112,7 @@ if ($_POST['user_login']) {
       <?php endif; ?>
 		</div>
 	</div>
-</section>
+</section>-->
 
 <section id="about">
 	<h2>about us</h2>
@@ -187,9 +188,7 @@ if ($_POST['user_login']) {
             yob = +$('#age-confirm input[type="number"]').val();
             if (yob && yob <= (new Date()).getFullYear() && yob >= 1900) {
                 var rememberYob = $('#age-confirm input[type="checkbox"]').prop("checked");
-                if (rememberYob) {
-                    window.localStorage.setItem("yearOfBirth", yob);
-				}
+                window.localStorage.setItem("yearOfBirth", yob);
                 checkYob(yob);
 			} else {
                 alert('Invalid Year of Birth');
