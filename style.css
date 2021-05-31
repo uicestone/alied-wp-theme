@@ -272,13 +272,13 @@ footer .contact p {
 
 footer .qr {
     height: 80px;
-    width: 80px;
+    width: 100px;
 }
 
 footer .qr img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .entry-content {
