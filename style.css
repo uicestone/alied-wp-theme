@@ -411,7 +411,7 @@ aside li {
     z-index: 20;
     background: black;
     display: flex;
-    background: url("img/home-welcome-bg1.jpg");
+    background: url("img/home-welcome-bg1-1.jpg");
     background-size: cover;
     font-weight: lighter;
     font-size: 0.8vw;
@@ -526,7 +526,7 @@ section#welcome {
     justify-content: center;
     align-items: center;
     position: relative;
-    background: url("img/home-welcome-bg2.jpg") center fixed;
+    background: url("img/home-welcome-bg2-1.jpg") center fixed;
     background-size: cover;
 }
 
