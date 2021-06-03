@@ -185,10 +185,11 @@ if ($_POST['user_login']) {
 			<a class="term-link" data-popup="<?= $order_status->post_name ?>"><?= $order_status->post_title ?></a>
 		</div>
 		<div class="term-popups">
-			<div id="privacy-policy"><?= wpautop($privacy_policy->post_content) ?><i class="close">×</i></div>
-			<div id="shipping-returns"><?= wpautop($shipping_returns->post_content) ?><i class="close">×</i></div>
-			<div id="terms-conditions"><?= wpautop($terms_conditions->post_content) ?><i class="close">×</i></div>
-			<div id="order-status"><?= wpautop($order_status->post_content) ?><i class="close">×</i></div>
+			<i class="close">×</i>
+			<div id="privacy-policy"><?= wpautop($privacy_policy->post_content) ?></div>
+			<div id="shipping-returns"><?= wpautop($shipping_returns->post_content) ?></div>
+			<div id="terms-conditions"><?= wpautop($terms_conditions->post_content) ?></div>
+			<div id="order-status"><?= wpautop($order_status->post_content) ?></div>
 		</div>
 	</div>
 </section>
@@ -245,11 +246,13 @@ if ($_POST['user_login']) {
 
 		$('.term-links').on("click", ".term-link", function() {
 		    var popup = $(this).data('popup');
-		    $('.term-popups>*').fadeOut(500);
+            $('.term-popups').fadeIn(500);
+		    $('.term-popups>div').fadeOut(500);
             $('.term-popups>#'+popup).fadeIn(500);
 		});
         $('.term-popups').on("click", ".close", function() {
-            $('.term-popups>*').fadeOut(500);
+            $('.term-popups').fadeOut(500);
+            $('.term-popups>div').fadeOut(500);
         });
 
     })

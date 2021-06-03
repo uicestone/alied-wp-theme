@@ -411,7 +411,7 @@ aside li {
     z-index: 20;
     background: black;
     display: flex;
-    background: url("img/home-welcome-bg1-1.jpg");
+    background: url("img/home-welcome-bg1-1.jpg") center;
     background-size: cover;
     font-weight: lighter;
     font-size: 0.8vw;
@@ -737,7 +737,7 @@ section#contact .term-links {
     justify-content: space-between;
     width: 50%;
     min-width: 550px;
-    margin: 15vh auto 0;
+    margin: 15vh auto 5vh;
     font-weight: normal;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -745,9 +745,17 @@ section#contact .term-links {
 section#contact .term-link {
     display: block;
     cursor: pointer;
+    flex: 0;
+    white-space: nowrap;
+    line-height: 10px;
 }
 
-section#contact .term-popups>* {
+section#contact .term-link:not(:last-child) {
+    border-right: 1px white solid;
+    padding-right: 10px;
+}
+
+section#contact .term-popups {
     display: none;
     position: absolute;
     left: 0;
@@ -759,22 +767,27 @@ section#contact .term-popups>* {
     overflow-y: auto;
     background-color: #757f8c;
     height: 80vh;
-    padding: 40px;
     box-shadow: 5px 5px 30px #4c4c4c;
     text-align: justify;
     line-height: 1.4;
     font-size: 14px;
 }
 
+section#contact .term-popups>div {
+    display: none;
+    padding: 40px;
+}
+
 section#contact .term-popups .close {
-    position: absolute;
-    right: 15px;
-    top: 25px;
+    position: sticky;
+    top: 20px;
+    float: right;
     font-size: 60px;
     font-style: normal;
     line-height: 0;
     font-weight: lighter;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 section#contact .term-popups h2 {
