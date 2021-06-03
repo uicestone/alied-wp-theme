@@ -1,14 +1,15 @@
 <?php
 if ($_POST['user_login']) {
-  $user = wp_authenticate($_POST['user_login'], $_POST['user_pass']);
+	$user = wp_authenticate($_POST['user_login'], $_POST['user_pass']);
 
-  if(is_a($user, 'WP_Error')){
-    exit(array_values($user->errors)[0][0]);
-  }
+	if (is_a($user, 'WP_Error')) {
+		exit(array_values($user->errors)[0][0]);
+	}
 
-  wp_set_auth_cookie($user->ID, isset($_POST['remember']));
-  wp_set_current_user($user->ID);
-  header('Location: ' . site_url()); exit;
+	wp_set_auth_cookie($user->ID, isset($_POST['remember']));
+	wp_set_current_user($user->ID);
+	header('Location: ' . site_url());
+	exit;
 }
 ?>
 <!DOCTYPE html>
@@ -21,7 +22,7 @@ if ($_POST['user_login']) {
 
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class();?>>
+<body <?php body_class(); ?>>
 
 <div id="topbar">
 	<!--<div id="logo"></div>-->
@@ -36,7 +37,7 @@ if ($_POST['user_login']) {
 </div>
 
 <aside id="menu" style="display: none">
-  <div class="blur-bg"></div>
+	<div class="blur-bg"></div>
 	<ul>
 		<li>
 			<a href="#about">ABOUT US</a>
@@ -48,7 +49,7 @@ if ($_POST['user_login']) {
 			<a href="#contact">CONTACT US</a>
 		</li>
 		<li>
-			<a href="<?=site_url()?>/my-account/">LOGIN</a>
+			<a href="<?= site_url() ?>/my-account/">LOGIN</a>
 		</li>
 	</ul>
 </aside>
@@ -57,7 +58,7 @@ if ($_POST['user_login']) {
 
 <div class="modal" id="age-confirm" style="display: none">
 	<div class="container">
-		<img src="<?=get_stylesheet_directory_uri()?>/img/logo-rw.png">
+		<img src="<?= get_stylesheet_directory_uri() ?>/img/logo-rw.png">
 		<p>Please enter your year of birth</p>
 		<input type="number" placeholder="YYYY">
 		<label class="checkbox-container">
@@ -66,19 +67,20 @@ if ($_POST['user_login']) {
 			<span class="checkmark"></span>
 		</label>
 		<button>ENTER</button>
-		<p class="remember-warning">Do not use 'remember me' option if this is a public terminal or if it's shared with anyone under the legal drinking age in your area.</p>
+		<p class="remember-warning">Do not use 'remember me' option if this is a public terminal or if it's shared with
+			anyone under the legal drinking age in your area.</p>
 		<h3>WARNING:</h3>
 		<p>
 			Under the Liquor Control Reform Act 1998 it is an offence:
-			<br />To supply alcohol to a person under the age of 18 years (Penalty exceeds $ 17,000)
-			<br />For a person under the age of 18 years to purchase or receive liquor. (Penalty exceeds $ 7,000)
+			<br/>To supply alcohol to a person under the age of 18 years (Penalty exceeds $ 17,000)
+			<br/>For a person under the age of 18 years to purchase or receive liquor. (Penalty exceeds $ 7,000)
 		</p>
 	</div>
 </div>
 
 <section id="welcome">
 	<div class="welcome-message">
-		<img src="<?=get_stylesheet_directory_uri()?>/img/logo-rw.png">
+		<img src="<?= get_stylesheet_directory_uri() ?>/img/logo-rw.png">
 		<h1 class="slogan">DELIVERING FROM LOCAL<br>
 			PRODUCERS TO YOUR HOME</h1>
 		<a href="#shop">SHOP NOW</a>
@@ -90,7 +92,7 @@ if ($_POST['user_login']) {
 	<div class="modal">
 		<div>
 			<div id="warning">
-		        <img src="<?=get_stylesheet_directory_uri()?>/img/logo-rw.png">
+		        <img src="<?= get_stylesheet_directory_uri() ?>/img/logo-rw.png">
 				<h3>WARNING:</h3>
 				<p>
 					Under the Liquor Control Reform Act 1998 it is an offence:
@@ -99,14 +101,14 @@ if ($_POST['user_login']) {
 				</p>
 			</div>
       <?php if (is_user_logged_in()): ?>
-        <div id="welcome">Welcome, <a href="<?=site_url()?>/my-account/"><?=wp_get_current_user()->display_name?></a></div>
+        <div id="welcome">Welcome, <a href="<?= site_url() ?>/my-account/"><?= wp_get_current_user()->display_name ?></a></div>
       <?php else: ?>
 			<form method="post">
 				<input placeholder="User ID" name="user_login" />
 				<input placeholder="Password" type="password" name="user_pass" />
 				<div class="submit">
 					<button type="submit">LOGIN</button>
-					<a href="<?=site_url()?>/my-account/">REGISTER</a>
+					<a href="<?= site_url() ?>/my-account/">REGISTER</a>
 				</div>
 			</form>
       <?php endif; ?>
@@ -116,9 +118,9 @@ if ($_POST['user_login']) {
 
 <section id="about">
 	<h2>about us</h2>
-  <div class="container">
-    <?=wpautop(get_page_by_path("about")->post_content)?>
-  </div>
+	<div class="container">
+			<?= wpautop(get_page_by_path("about")->post_content) ?>
+	</div>
 </section>
 
 <section id="shop">
@@ -126,24 +128,29 @@ if ($_POST['user_login']) {
 	<div class="container">
 		<div id="categories">
 			<div class="category">
-				<a href="<?=site_url()?>/product-category/chinese-spirits/"><img src="<?=get_stylesheet_directory_uri()?>/img/chinese spirits.png" /></a>
-				<a href="<?=site_url()?>/product-category/chinese-spirits/"><h3>Chinese Spirits</h3></a>
+				<a href="<?= site_url() ?>/product-category/chinese-spirits/"><img
+							src="<?= get_stylesheet_directory_uri() ?>/img/chinese spirits.png"/></a>
+				<a href="<?= site_url() ?>/product-category/chinese-spirits/"><h3>Chinese Spirits</h3></a>
 			</div>
 			<div class="category">
-				<a href="<?=site_url()?>/product-category/spirits/"><img src="<?=get_stylesheet_directory_uri()?>/img/spirits.png" /></a>
-				<a href="<?=site_url()?>/product-category/spirits/"><h3>Spirits</h3></a>
+				<a href="<?= site_url() ?>/product-category/spirits/"><img
+							src="<?= get_stylesheet_directory_uri() ?>/img/spirits.png"/></a>
+				<a href="<?= site_url() ?>/product-category/spirits/"><h3>Spirits</h3></a>
 			</div>
 			<div class="category">
-				<a href="<?=site_url()?>/product-category/sake/"><img src="<?=get_stylesheet_directory_uri()?>/img/champagne.png" /></a>
-				<a href="<?=site_url()?>/product-category/sake/"><h3>Sake</h3></a>
+				<a href="<?= site_url() ?>/product-category/sake/"><img
+							src="<?= get_stylesheet_directory_uri() ?>/img/champagne.png"/></a>
+				<a href="<?= site_url() ?>/product-category/sake/"><h3>Sake</h3></a>
 			</div>
 			<div class="category">
-				<a href="<?=site_url()?>/product-category/wine/"><img src="<?=get_stylesheet_directory_uri()?>/img/wine.png" /></a>
-				<a href="<?=site_url()?>/product-category/wine/"><h3>Wine</h3></a>
+				<a href="<?= site_url() ?>/product-category/wine/"><img
+							src="<?= get_stylesheet_directory_uri() ?>/img/wine.png"/></a>
+				<a href="<?= site_url() ?>/product-category/wine/"><h3>Wine</h3></a>
 			</div>
 			<div class="category">
-				<a href="<?=site_url()?>/product-category/wine-vessel/"><img src="<?=get_stylesheet_directory_uri()?>/img/wine vessel.png" /></a>
-				<a href="<?=site_url()?>/product-category/wine-vessel/"><h3>Wine Vessel</h3></a>
+				<a href="<?= site_url() ?>/product-category/wine-vessel/"><img
+							src="<?= get_stylesheet_directory_uri() ?>/img/wine vessel.png"/></a>
+				<a href="<?= site_url() ?>/product-category/wine-vessel/"><h3>Wine Vessel</h3></a>
 			</div>
 		</div>
 	</div>
@@ -151,73 +158,101 @@ if ($_POST['user_login']) {
 
 <section id="contact">
 	<h2>contact us</h2>
-  <div class="container">
-    <iframe
-        loading="lazy"
-        allowfullscreen
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDPQj8cp29qnlKkF5VWMQTUFSeOglrSKgk&q=25+COOK+ROAD,MITCHAM+VIC+3132+AUS">
-    </iframe>
-    <div id="contact-info">
-      <img src="<?=get_stylesheet_directory_uri()?>/img/logo-rw.png">
-      <div id="company-info">
-        <p>Australian Liquor Import Export Distributor Pty Ltd</p>
-        <p>BWR Liquer Supplies Pty Ltd</p>
-        <p>Address : Unit2, 25 Cook road，Mitcham Vic 3132 Australia</p>
-      </div>
-    </div>
-  </div>
+	<div class="container">
+		<iframe
+				loading="lazy"
+				allowfullscreen
+				src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDPQj8cp29qnlKkF5VWMQTUFSeOglrSKgk&q=25+COOK+ROAD,MITCHAM+VIC+3132+AUS">
+		</iframe>
+		<div id="contact-info">
+			<img src="<?= get_stylesheet_directory_uri() ?>/img/logo-rw.png">
+			<div id="company-info">
+				<p>Australian Liquor Import Export Distributor Pty Ltd</p>
+				<p>BWR Liquer Supplies Pty Ltd</p>
+				<p>Address : Unit2, 25 Cook road，Mitcham Vic 3132 Australia</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="term-links">
+			<?php $shipping_returns = get_page_by_path('shipping-returns'); ?>
+			<?php $privacy_policy = get_page_by_path('privacy-policy'); ?>
+			<?php $terms_conditions = get_page_by_path('terms-conditions'); ?>
+			<?php $order_status = get_page_by_path('order-status'); ?>
+			<a class="term-link" data-popup="<?= $privacy_policy->post_name ?>"><?= $privacy_policy->post_title ?></a>
+			<a class="term-link" data-popup="<?= $shipping_returns->post_name ?>"><?= $shipping_returns->post_title ?></a>
+			<a class="term-link" data-popup="<?= $terms_conditions->post_name ?>"><?= $terms_conditions->post_title ?></a>
+			<a class="term-link" data-popup="<?= $order_status->post_name ?>"><?= $order_status->post_title ?></a>
+		</div>
+		<div class="term-popups">
+			<div id="privacy-policy"><?= wpautop($privacy_policy->post_content) ?><i class="close">×</i></div>
+			<div id="shipping-returns"><?= wpautop($shipping_returns->post_content) ?><i class="close">×</i></div>
+			<div id="terms-conditions"><?= wpautop($terms_conditions->post_content) ?><i class="close">×</i></div>
+			<div id="order-status"><?= wpautop($order_status->post_content) ?><i class="close">×</i></div>
+		</div>
+	</div>
 </section>
 
 <script>
-	jQuery(function ($) {
+    jQuery(function ($) {
         var yob = window.localStorage.getItem("yearOfBirth");
 
-	    function checkYob(yob) {
+        function checkYob(yob) {
             if (!yob || (new Date()).getFullYear() - yob < 18) {
                 $("#age-confirm").show();
-                $('body').css({'overflow-y':'hidden'});
+                $('body').css({'overflow-y': 'hidden'});
             } else {
                 $("#age-confirm").fadeOut(1000);
-                $('body').css({'overflow-y':'auto'});
-			}
-		}
+                $('body').css({'overflow-y': 'auto'});
+            }
+        }
 
-		checkYob(yob);
+        checkYob(yob);
 
-        $('#age-confirm button').click(function(){
+        $('#age-confirm button').click(function () {
             yob = +$('#age-confirm input[type="number"]').val();
             if (yob && yob <= (new Date()).getFullYear() && yob >= 1900) {
                 var rememberYob = $('#age-confirm input[type="checkbox"]').prop("checked");
                 window.localStorage.setItem("yearOfBirth", yob);
                 checkYob(yob);
-			} else {
+            } else {
                 alert('Invalid Year of Birth');
-			}
-		});
+            }
+        });
 
-		$('#welcome img').click(function () {
-		    window.localStorage.clear();
-		});
+        $('#welcome img').click(function () {
+            window.localStorage.clear();
+        });
 
-	    $('#menu-toggle').click(function () {
-	        $('#menu:visible,#menu-modal:visible').fadeOut(700);
-	        // $('#home .modal:visible').fadeOut(700);
+        $('#menu-toggle').click(function () {
+            $('#menu:visible,#menu-modal:visible').fadeOut(700);
+            // $('#home .modal:visible').fadeOut(700);
             $('#menu:hidden,#menu-modal:hidden').fadeIn(700);
-	    });
+        });
 
-      $('#menu li').click(function () {
-          $('#menu:visible,#menu-modal:visible').fadeOut(700);
-      });
+        $('#menu li').click(function () {
+            $('#menu:visible,#menu-modal:visible').fadeOut(700);
+        });
 
-      $('#menu-modal').click(function () {
-          $('#menu:visible,#menu-modal:visible').fadeOut(700);
-		  });
+        $('#menu-modal').click(function () {
+            $('#menu:visible,#menu-modal:visible').fadeOut(700);
+        });
 
-      // $('[href="#login"]').click(function () {
-      //     $('#home .modal:hidden').fadeIn(700);
-      //     $('#menu:visible,#menu-modal:visible').fadeOut(700);
-		  // });
-	})
+        // $('[href="#login"]').click(function () {
+        //     $('#home .modal:hidden').fadeIn(700);
+        //     $('#menu:visible,#menu-modal:visible').fadeOut(700);
+        // });
+
+		$('.term-links').on("click", ".term-link", function() {
+		    var popup = $(this).data('popup');
+		    $('.term-popups>*').fadeOut(500);
+            $('.term-popups>#'+popup).fadeIn(500);
+		});
+        $('.term-popups').on("click", ".close", function() {
+            $('.term-popups>*').fadeOut(500);
+        });
+
+    })
 </script>
 
 <?php wp_footer(); ?>

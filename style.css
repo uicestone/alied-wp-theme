@@ -691,6 +691,7 @@ section#shop .category img {
 
 section#contact {
     background-color: #757e8c;
+    position: relative;
 }
 
 section#contact .container {
@@ -729,6 +730,63 @@ section#contact #contact-info #company-info p {
     text-transform: uppercase;
     line-height: 1;
     margin-top: 8px;
+}
+
+section#contact .term-links {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    min-width: 550px;
+    margin: 15vh auto 0;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section#contact .term-link {
+    display: block;
+    cursor: pointer;
+}
+
+section#contact .term-popups>* {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 80%;
+    margin: auto;
+    overflow-y: auto;
+    background-color: #757f8c;
+    height: 80vh;
+    padding: 40px;
+    box-shadow: 5px 5px 30px #4c4c4c;
+    text-align: justify;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+section#contact .term-popups .close {
+    position: absolute;
+    right: 15px;
+    top: 25px;
+    font-size: 60px;
+    font-style: normal;
+    line-height: 0;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+section#contact .term-popups h2 {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+section#contact .term-popups h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 0;
 }
 
 /* Store style */
