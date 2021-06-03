@@ -735,7 +735,7 @@ section#contact #contact-info #company-info p {
 section#contact .term-links {
     display: flex;
     justify-content: space-between;
-    width: 50%;
+    /*width: 50%;*/
     min-width: 550px;
     margin: 15vh auto 5vh;
     font-weight: normal;
@@ -747,12 +747,12 @@ section#contact .term-link {
     cursor: pointer;
     flex: 0;
     white-space: nowrap;
-    line-height: 10px;
+    line-height: 12px;
+    padding: 0 1vw;
 }
 
 section#contact .term-link:not(:last-child) {
-    border-right: 1px white solid;
-    padding-right: 10px;
+    border-right: 2px white solid;
 }
 
 section#contact .term-popups {
